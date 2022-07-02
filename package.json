@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "@emotion/react": "latest",
+    "@emotion/styled": "latest",
+    "@mui/material": "latest",
+    "prop-types": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-swipeable-views": "latest"
+  },
+  "description": "https://github.com/mui/material-ui/blob/v5.8.6/docs/data/material/components/tabs/FullWidthTabs.js",
+  "devDependencies": {
+    "react-scripts": "latest"
+  },
+  "name": "fullwidthtabs-demo-material-ui-forked",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
