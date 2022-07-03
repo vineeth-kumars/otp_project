@@ -16,7 +16,7 @@ const contactsData = [
 ];
 
 function Contacts() {
-  console.log(contactsData);
+  // console.log(contactsData);
 
   return (
     <div>

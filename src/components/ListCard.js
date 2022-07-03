@@ -24,7 +24,7 @@ export default function BasicCard(props) {
   const ShowInfoPageHandle = () => {
     setShowInfoPage(true);
   };
-  console.log(contactsList);
+  // console.log(contactsList);
   return (
     <div>
       {showInfoPage === false ? (
@@ -45,6 +45,7 @@ export default function BasicCard(props) {
                       size="small"
                       onClick={() => {
                         setShowInfoPage(true);
+
                         setContactInfo(contact);
                       }}
                     >
@@ -58,7 +59,7 @@ export default function BasicCard(props) {
           })}
         </>
       ) : (
-        <ContactInfoPage />
+        <ContactInfoPage contactInfo={contactInfo} />
       )}
     </div>
 
