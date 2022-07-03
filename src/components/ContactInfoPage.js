@@ -23,6 +23,7 @@ export default function ContactInfoPage(props) {
     <>
       <DiologueContext.Provider>
         <MessageDialogueBox
+          setMessageHistory={props.setMessageHistory}
           open={open}
           handleClose={handleClose}
           contactInfo={props.contactInfo}

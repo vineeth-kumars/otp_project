@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import SwipeableViews from "react-swipeable-views";
 import { useTheme } from "@mui/material/styles";
@@ -8,6 +8,11 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Contacts from "./components/ContactsTab";
+import MessageHistoryPage from "./components/MessageHistoryPage";
+import { createContext } from "react";
+
+export const messageHistoryContext = createContext(null);
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -52,7 +57,10 @@ export default function FullWidthTabs() {
   const handleChangeIndex = (index) => {
     setValue(index);
   };
-
+  const [messageHistory, setMessageHistory] = React.useState([]);
+  // const setMessageHistory=(e)=>{
+  //   messageHistory=messageHistory.push(e)
+  // }
   return (
     <Box sx={{ bgcolor: "background.paper", width: 500 }}>
       <AppBar position="static">
@@ -65,7 +73,7 @@ export default function FullWidthTabs() {
           aria-label="full width tabs example"
         >
           <Tab label="Contacts" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
+          <Tab label="Message History" {...a11yProps(1)} />
         </Tabs>
       </AppBar>
       <SwipeableViews
@@ -74,10 +82,10 @@ export default function FullWidthTabs() {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-          <Contacts />
+          <Contacts setMessageHistory={setMessageHistory} />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          Item Two
+          <MessageHistoryPage messageHistory={messageHistory} />
         </TabPanel>
       </SwipeableViews>
     </Box>

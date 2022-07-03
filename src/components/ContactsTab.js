@@ -15,12 +15,15 @@ const contactsData = [
   }
 ];
 
-function Contacts() {
+function Contacts(props) {
   // console.log(contactsData);
 
   return (
     <div>
-      <BasicCard contactsData={contactsData} />
+      <BasicCard
+        setMessageHistory={props.setMessageHistory}
+        contactsData={contactsData}
+      />
     </div>
   );
 }

@@ -10,13 +10,21 @@ import { useTheme } from "@mui/material/styles";
 import DiologueContext from "./ContactInfoPage";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import messageHistoryContext from "../demo";
 
 export default function MessageDialogueBox(props) {
-  // const {open ,handleClose} = useContext(DiologueContext);
+  // const {messageHistory} = useContext(messageHistoryContext);
   const theme = useTheme();
+  var message = "";
+  var sentmessage = {};
+  const [previousMessage, setPreviousMessage] = React.useState([]);
+  var individualMessageHistory = null;
+  //  console.log(props.setMessageHistory);
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
-
-  console.log(props.contactInfo);
+  const OTP =
+    "Hii , Your OTP is " + Math.floor(100000 + Math.random() * 900000);
+  // console.log(OTP)
+  // console.log(props.contactInfo);
 
   return (
     <div>
@@ -39,14 +47,38 @@ export default function MessageDialogueBox(props) {
         maxWidth: '100%',
       }}
     > */}
-          <TextField fullWidth label="" id="fullWidth" />
+          <TextField fullWidth label="" id="fullWidth" defaultValue={OTP} />
           {/* </Box> */}
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={props.handleClose}>
             Cancel
           </Button>
-          <Button onClick={props.handleClose} autoFocus>
+          <Button
+            onClick={() => {
+              props.handleClose();
+              console.log(props.messageHistory);
+              message = fullWidth.defaultValue;
+              // console.log(message);
+              sentmessage = { message: message };
+
+              individualMessageHistory = Object.assign(
+                props.contactInfo,
+                sentmessage
+              );
+              // props.setMessageHistory(individualMessageHistory);
+              previousMessage.push(individualMessageHistory);
+              console.log(previousMessage);
+              props.setMessageHistory(previousMessage);
+
+              // messageHistory.push(individualMessageHistory)
+              // console.log(messageHistory)
+              // console.log(individualMessageHistory);
+
+              // console.log(sentmessage);
+            }}
+            autoFocus
+          >
             Send
           </Button>
         </DialogActions>
