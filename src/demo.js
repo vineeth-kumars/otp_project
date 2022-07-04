@@ -57,10 +57,14 @@ export default function FullWidthTabs() {
   const handleChangeIndex = (index) => {
     setValue(index);
   };
-  const [messageHistory, setMessageHistory] = React.useState([]);
-  // const setMessageHistory=(e)=>{
-  //   messageHistory=messageHistory.push(e)
-  // }
+
+  
+  const messageHistory = [];
+  const setMessageHistory = (e) =>{
+    messageHistory.push(e);
+    console.log(messageHistory)
+  }
+ 
   return (
     <Box sx={{ bgcolor: "background.paper", width: 500 }}>
       <AppBar position="static">
@@ -82,10 +86,17 @@ export default function FullWidthTabs() {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-          <Contacts setMessageHistory={setMessageHistory} />
+          
+          <Contacts  setMessageHistory={setMessageHistory}/>
+          
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          <MessageHistoryPage messageHistory={messageHistory} />
+        
+        <messageHistoryContext.Provider value={{messageHistory}}>
+          <MessageHistoryPage
+          //  messageHistory={messageHistory}
+           />
+          </messageHistoryContext.Provider>
         </TabPanel>
       </SwipeableViews>
     </Box>

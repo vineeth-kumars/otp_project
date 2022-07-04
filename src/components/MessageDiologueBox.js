@@ -13,12 +13,24 @@ import TextField from "@mui/material/TextField";
 import messageHistoryContext from "../demo";
 
 export default function MessageDialogueBox(props) {
-  // const {messageHistory} = useContext(messageHistoryContext);
+  // const {setMessageHistory} = useContext(messageHistoryContext);
+  // const messageHistory=props.messageHistory
   const theme = useTheme();
-  var message = "";
+  // var message = "";
+  var receiver =props.contactInfo.firstName;
   var sentmessage = {};
+
+  const state={
+    text:{
+      recipient:receiver,
+      textmessage:''
+    }
+  }
+  const sendText = () => {
+
+  }
   const [previousMessage, setPreviousMessage] = React.useState([]);
-  var individualMessageHistory = null;
+  const individualMessageHistory = {};
   //  console.log(props.setMessageHistory);
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
   const OTP =
@@ -38,7 +50,7 @@ export default function MessageDialogueBox(props) {
         aria-labelledby="responsive-dialog-title"
       >
         <DialogTitle id="responsive-dialog-title">
-          Send Message To : {props.contactInfo.firstName}
+          Send Message To : {receiver}
         </DialogTitle>
         <DialogContent>
           {/* <Box
@@ -58,18 +70,23 @@ export default function MessageDialogueBox(props) {
             onClick={() => {
               props.handleClose();
               console.log(props.messageHistory);
-              message = fullWidth.defaultValue;
+              state.text.textmessage = fullWidth.defaultValue;
+              console.log(state);
+              props.setMessageHistory(state);
+              fetch(`http://localhost:4000/send-text?recipient=${state.text.recipient}&textmessage=${state.text.textmessage}`)
+              .catch(err => console.log(err));
               // console.log(message);
-              sentmessage = { message: message };
+              // sentmessage = { message: message };
 
-              individualMessageHistory = Object.assign(
-                props.contactInfo,
-                sentmessage
-              );
+              // individualMessageHistory = Object.assign(
+              //   props.contactInfo,
+              //   sentmessage
+              // );
               // props.setMessageHistory(individualMessageHistory);
-              previousMessage.push(individualMessageHistory);
-              console.log(previousMessage);
-              props.setMessageHistory(previousMessage);
+              // previousMessage.push(individualMessageHistory);
+              // setMessageHistory(previousMessage)
+              // console.log(previousMessage);
+              
 
               // messageHistory.push(individualMessageHistory)
               // console.log(messageHistory)

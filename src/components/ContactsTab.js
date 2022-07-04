@@ -21,8 +21,8 @@ function Contacts(props) {
   return (
     <div>
       <BasicCard
-        setMessageHistory={props.setMessageHistory}
-        contactsData={contactsData}
+        setMessageHistory={props.setMessageHistory} 
+               contactsData={contactsData}
       />
     </div>
   );

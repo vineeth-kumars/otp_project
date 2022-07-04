@@ -62,6 +62,7 @@ export default function BasicCard(props) {
         <ContactInfoPage
           contactInfo={contactInfo}
           setMessageHistory={props.setMessageHistory}
+          
         />
       )}
     </div>
