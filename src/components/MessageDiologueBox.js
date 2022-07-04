@@ -73,8 +73,8 @@ export default function MessageDialogueBox(props) {
               state.text.textmessage = fullWidth.defaultValue;
               console.log(state);
               props.setMessageHistory(state);
-              fetch(`http://localhost:4000/send-text?recipient=${state.text.recipient}&textmessage=${state.text.textmessage}`)
-              .catch(err => console.log(err));
+              // fetch(`http://localhost:4000/send-text?recipient=${state.text.recipient}&textmessage=${state.text.textmessage}`)
+              // .catch(err => console.log(err));
               // console.log(message);
               // sentmessage = { message: message };
 

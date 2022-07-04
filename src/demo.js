@@ -57,11 +57,12 @@ export default function FullWidthTabs() {
   const handleChangeIndex = (index) => {
     setValue(index);
   };
-
+const [sentMessageHistory,setSentMessageHistory] = React.useState([])
   
   const messageHistory = [];
   const setMessageHistory = (e) =>{
     messageHistory.push(e);
+    setSentMessageHistory(messageHistory);
     console.log(messageHistory)
   }
  
@@ -92,7 +93,7 @@ export default function FullWidthTabs() {
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
         
-        <messageHistoryContext.Provider value={{messageHistory}}>
+        <messageHistoryContext.Provider value={{sentMessageHistory}}>
           <MessageHistoryPage
           //  messageHistory={messageHistory}
            />

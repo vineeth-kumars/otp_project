@@ -18,16 +18,17 @@ const bull = (
  
 
 export default function MessageHistoryPage(props) {
-   const {messageHistory} = useContext(messageHistoryContext);
+   const {sentMessageHistory} = useContext(messageHistoryContext);
   // const history = props.messageHistory;
+  console.log(sentMessageHistory)
   // React.useEffect(()=>{
-    console.log(messageHistory)
+    // console.log(messageHistory)
 
   // })
   // console.log(history);
   return (
     <>
-      {messageHistory.map((sent) => {
+      {sentMessageHistory.map((sent) => {
         return (
           <>
             <Card sx={{ minWidth: 275 }}>
@@ -37,7 +38,7 @@ export default function MessageHistoryPage(props) {
                   color="text.secondary"
                   gutterBottom
                 >
-                  Message to{sent.firstName}
+                  Message to :{sent.text.recipient}
                 </Typography>
                 <Typography variant="h5" component="div"></Typography>
                 <Typography
@@ -45,7 +46,7 @@ export default function MessageHistoryPage(props) {
                   color="text.secondary"
                 ></Typography>
                 <Typography variant="body2">
-                  {sent.message}
+                  {sent.text.textmessage}
                   <br />
                 </Typography>
               </CardContent>
